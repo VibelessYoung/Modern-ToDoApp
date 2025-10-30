@@ -1,0 +1,32 @@
+---
+import "../styles/style.css";
+import Test from "../components/test.astro";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ToDoApp</title>
+  </head>
+  <body class="min-h-screen bg-gradient-to-b from-[#0f172a] via-[#071029] to-[#020617] text-gray-200 font-sans">
+    <Test />
+    <script>
+      // Tailwind playground config: enable dark mode by class and add Persian font fallback
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Inter", "Vazirmatn", "system-ui", "sans-serif"],
+            },
+            colors: {
+              primary: "#7c3aed",
+            },
+          },
+        },
+      };
+    </script>
+  </body>
+</html>

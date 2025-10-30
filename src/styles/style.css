@@ -1,0 +1,17 @@
+@import "tailwindcss";
+
+@supports (
+  (-webkit-backdrop-filter: blur(10px)) or (backdrop-filter: blur(10px))
+) {
+  .frosted {
+    -webkit-backdrop-filter: blur(8px) saturate(120%);
+    backdrop-filter: blur(8px) saturate(120%);
+  }
+}
+.glow {
+  filter: drop-shadow(0 10px 30px rgba(124, 58, 237, 0.25));
+}
+html,
+body {
+  height: 100%;
+}
