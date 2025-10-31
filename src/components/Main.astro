@@ -64,3 +64,32 @@ import "../styles/style.css";
     </div>
   </section>
 </main>
+<script>
+  const addBtnEL = document.querySelector("#addBtn");
+  const inputEL = document.querySelector("#newTodo");
+
+  function submitHandler() {
+    const todoText = inputEL.value.trim();
+
+    if (!todoText) {
+      alert("لطفاً چیزی بنویس!");
+      return;
+    }
+
+    if (todoText.includes("<script>")) {
+      inputEL.value = todoText.replace("<script>", "");
+      alert("DONT USE SCRIPT I SEE YOU !");
+      return;
+    }
+    inputEL.value = "";
+  }
+
+  addBtnEL.addEventListener("click", submitHandler);
+
+  inputEL.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      submitHandler();
+    }
+  });
+</script>
