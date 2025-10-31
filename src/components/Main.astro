@@ -64,7 +64,9 @@ import "../styles/style.css";
     </div>
   </section>
 </main>
-<script>
+<script type="module">
+  import { state, addTodo, getTodos } from "../../public/state/state.js";
+
   const addBtnEL = document.querySelector("#addBtn");
   const inputEL = document.querySelector("#newTodo");
 
@@ -72,7 +74,7 @@ import "../styles/style.css";
     const todoText = inputEL.value.trim();
 
     if (!todoText) {
-      alert("لطفاً چیزی بنویس!");
+      alert("WRITE SOMETHING . . .");
       return;
     }
 
@@ -81,6 +83,7 @@ import "../styles/style.css";
       alert("DONT USE SCRIPT I SEE YOU !");
       return;
     }
+    addTodo(todoText);
     inputEL.value = "";
   }
 
