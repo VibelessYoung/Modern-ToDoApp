@@ -1,6 +1,8 @@
 ---
 import "../styles/style.css";
-import Test from "../components/test.astro";
+import Circles from "../components/circles.astro";
+import Header from "../components/Header.astro";
+import Main from "../components/Main.astro";
 ---
 
 <!doctype html>
@@ -10,10 +12,10 @@ import Test from "../components/test.astro";
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ToDoApp</title>
   </head>
-  <body class="min-h-screen bg-gradient-to-b from-[#0f172a] via-[#071029] to-[#020617] text-gray-200 font-sans">
-    <Test />
+  <body
+    class="min-h-screen bg-gradient-to-b from-[#0f172a] via-[#071029] to-[#020617] text-gray-200 font-sans"
+  >
     <script>
-      // Tailwind playground config: enable dark mode by class and add Persian font fallback
       tailwind.config = {
         darkMode: "class",
         theme: {
@@ -28,5 +30,10 @@ import Test from "../components/test.astro";
         },
       };
     </script>
+    <div class="max-w-3xl mx-auto px-6 py-10 flex flex-col min-h-screen">
+      <Circles />
+      <Header />
+      <Main />
+    </div>
   </body>
 </html>
