@@ -27,28 +27,13 @@ import "../styles/style.css";
       <p class="text-sm text-slate-400">Now or Never</p>
     </div>
   </div>
-
-  <div class="flex items-center gap-3">
-    <button
-      id="themeToggle"
-      class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/6 hover:bg-white/9 transition"
-    >
-      <svg id="moon" class="w-5 h-5" viewBox="0 0 24 24" fill="none"
-        ><path
-          d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"
-          stroke="currentColor"
-          stroke-width="1.4"
-          stroke-linecap="round"
-          stroke-linejoin="round"></path></svg
-      >
-      <span class="text-sm">Light - Dark</span>
-    </button>
-  </div>
 </header>
 
 <script>
-  const btn = document.getElementById("themeToggle");
-  btn?.addEventListener("click", () => {
-    document.body.classList.toggle("dark");
+  document.addEventListener("DOMContentLoaded", () => {
+    const btn = document.getElementById("themeToggle");
+    btn?.addEventListener("click", () => {
+      document.documentElement.classList.toggle("dark");
+    });
   });
 </script>
