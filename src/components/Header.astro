@@ -45,3 +45,10 @@ import "../styles/style.css";
     </button>
   </div>
 </header>
+
+<script>
+  const btn = document.getElementById("themeToggle");
+  btn?.addEventListener("click", () => {
+    document.body.classList.toggle("dark");
+  });
+</script>

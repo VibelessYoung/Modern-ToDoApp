@@ -13,7 +13,12 @@ import Main from "../components/Main.astro";
     <title>ToDoApp</title>
   </head>
   <body
-    class="min-h-screen bg-gradient-to-b from-[#0f172a] via-[#071029] to-[#020617] text-gray-200 font-sans"
+    class="min-h-screen
+         bg-gradient-to-b from-slate-100 via-white to-gray-100
+         dark:from-[#0f172a] dark:via-[#071029] dark:to-[#020617]
+         text-gray-900 dark:text-gray-200
+         font-sans
+         transition-colors duration-700 ease-in-out"
   >
     <script>
       tailwind.config = {
