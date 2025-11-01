@@ -120,6 +120,13 @@ import "../styles/style.css";
   loadTodos();
   renderTodos();
 
+  function deleteTodo(e) {
+    const index = e.currentTarget.getAttribute("data-index");
+    state.TodosState.splice(index, 1);
+    localStorage.setItem("todos", JSON.stringify(state.TodosState));
+    renderTodos();
+  }
+
   function renderTodos() {
     todoListEL.innerHTML = "";
     const todos = getTodos();
@@ -151,7 +158,7 @@ import "../styles/style.css";
                  m7.5 0a48.667 48.667 0 0 0-7.5 0" />
           </svg>
         </button>
-        <button
+        <button data-index="${index}" class="editBtn"
             ><svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -172,6 +179,10 @@ import "../styles/style.css";
 
       todoListEL.appendChild(todoItem);
     });
+
+    document.querySelectorAll(".deleteBtn").forEach((btn) => {
+      btn.addEventListener("click", deleteTodo);
+    });
   }
 
   function submitHandler() {
@@ -182,11 +193,12 @@ import "../styles/style.css";
       return;
     }
 
-    if (todoText.includes("<script>")) {
-      inputEL.value = todoText.replace("<script>", "");
+    if (/<\s*script.*?>/i.test(todoText)) {
+      inputEL.value = "";
       alert("DONT USE SCRIPT I SEE YOU !");
       return;
     }
+
     addTodo(todoText);
     renderTodos();
     inputEL.value = "";
