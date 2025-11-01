@@ -127,6 +127,43 @@ import "../styles/style.css";
     renderTodos();
   }
 
+  function editTodo(e) {
+    const index = e.currentTarget.getAttribute("data-index");
+    const todos = getTodos();
+    const oldText = todos[index];
+
+    const todoItem = e.currentTarget.closest("div.flex.justify-between");
+    const p = todoItem.querySelector("p");
+
+    const input = document.createElement("input");
+    input.type = "text";
+    input.value = oldText;
+    input.className =
+      "flex-1 rounded-full py-2 px-3 bg-white/10 text-slate-200 outline-none ring-1 ring-white/3 focus:ring-2 focus:ring-indigo-500 transition";
+
+    p.replaceWith(input);
+
+    input.focus();
+    input.select();
+
+    input.addEventListener("keydown", (event) => {
+      if (event.key === "Enter") {
+        const newText = input.value.trim();
+        if (newText) {
+          todos[index] = newText;
+          localStorage.setItem("todos", JSON.stringify(todos));
+          renderTodos();
+        }
+      }
+    });
+
+    input.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        renderTodos(); // فقط ری‌رندر کن تا به حالت قبل برگرده
+      }
+    });
+  }
+
   function renderTodos() {
     todoListEL.innerHTML = "";
     const todos = getTodos();
@@ -182,6 +219,10 @@ import "../styles/style.css";
 
     document.querySelectorAll(".deleteBtn").forEach((btn) => {
       btn.addEventListener("click", deleteTodo);
+    });
+
+    document.querySelectorAll(".editBtn").forEach((btn) => {
+      btn.addEventListener("click", editTodo);
     });
   }
 
